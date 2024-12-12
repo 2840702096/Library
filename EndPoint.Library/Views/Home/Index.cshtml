@@ -1,0 +1,137 @@
+﻿@section Top {
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <title>Start Bootstrap - SB Admin Version 2.0 Demo</title>
+
+        <!-- Core CSS - Include with every page -->
+        <link href="css/bootstrap-rtl.css" rel="stylesheet">
+        <link href="font-awesome/css/font-awesome.css" rel="stylesheet">
+
+        <!-- Page-Level Plugin CSS - Dashboard -->
+        <link href="css/plugins/morris/morris-0.4.3.min.css" rel="stylesheet">
+        <link href="css/plugins/timeline/timeline.css" rel="stylesheet">
+
+        <!-- SB Admin CSS - Include with every page -->
+        <link href="css/sb-admin.css" rel="stylesheet">
+    </head>
+}
+
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header">داشبورد</h1>
+    </div>
+    <!-- /.col-lg-12 -->
+</div>
+
+<div class="row">
+    <!-- /.col-lg-8 -->
+    <div class="col-lg-8">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <i class="fa fa-user"></i><a href="/Users" style="color:black"> کاربران اخیر</a>
+            </div>
+            <!-- /.panel-heading -->
+            <div class="panel-body">
+                @if (ViewBag.Users.Count == 0)
+                {
+                    <p>هنوز کاربری اضافه نشده است</p>
+                }
+                else
+                {
+                    @foreach (var Item in ViewBag.Users)
+                    {
+                        <a href="#" class="list-group-item">
+                            <i class="fa fa-user fa-fw"></i> @Item.Name
+                            <span class="pull-left text-muted small">
+                                <em>@Item.Phone</em>
+                            </span>
+                        </a>
+                    }
+                }
+            </div>
+            <!-- /.panel-body -->
+        </div>
+    </div>
+    <!-- /.col-lg-4 -->
+    <div class="col-lg-4">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <i class="fa fa-book fa-fw"></i><a href="/Books" style="color:black"> کتاب های اخیر</a>
+            </div>
+            <!-- /.panel-heading -->
+            <div class="panel-body">
+                @if (ViewBag.Books.Count == 0)
+                {
+                    <p>هنوز کتابی اضافه نشده است</p>
+                }
+                else
+                {
+                    @foreach (var Item in ViewBag.Books)
+                    {
+                        <a href="#" class="list-group-item">
+                            <i class="fa fa-book fa-fw"></i> @Item.Name
+                            <span class="pull-left text-muted small">
+                                @if (Item.IsActive)
+                                {
+                                    <em>فعال</em>
+                                }
+                                else
+                                {
+                                    <em>غیرفعال</em>
+                                }
+                            </span>
+                        </a>
+                    }
+                }
+            </div>
+            <!-- /.panel-body -->
+        </div>
+        <!-- /.panel .chat-panel -->
+    </div>
+    <!-- /.col-lg-8 -->
+    <div class="col-lg-8">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <i class="fa fa-bookmark"></i> <a href="/Users_Books" style="color:black">رزرواسیون های اخیر</a>
+            </div>
+            <!-- /.panel-heading -->
+            <div class="panel-body">
+                @if (ViewBag.Reservations.Count == 0)
+                {
+                    <p>هنوز رزرواسیونی صورت نگرفته است</p>
+                }
+                else
+                {
+                    @foreach (var Item in ViewBag.Reservations)
+                    {
+                        <a href="#" class="list-group-item">
+                            <i class="fa fa-bookmark fa-fw"></i> @Item.User.Name
+                            <span class="pull-left text-muted small">
+                                <em>@Item.Book.Name</em>
+                            </span>
+                        </a>
+                    }
+                }
+            </div>
+            <!-- /.panel-body -->
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="js/jquery-1.10.2.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/plugins/metisMenu/jquery.metisMenu.js"></script>
+
+    <!-- Page-Level Plugin Scripts - Dashboard -->
+    <script src="js/plugins/morris/raphael-2.1.0.min.js"></script>
+    <script src="js/plugins/morris/morris.js"></script>
+
+    <!-- SB Admin Scripts - Include with every page -->
+    <script src="js/sb-admin.js"></script>
+
+    <!-- Page-Level Demo Scripts - Dashboard - Use for reference -->
+    <script src="js/demo/dashboard-demo.js"></script>
+}

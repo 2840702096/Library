@@ -1,0 +1,148 @@
+﻿@using Library.Application.Services.Users_Books.Query.GetUsers_Books
+@using Library.Common
+@model List<GetUsers_BooksServiceResultDto>
+
+@{
+    DateTime Now = ViewBag.Now;
+}
+
+@section Top
+{
+    <head>
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <title>Start Bootstrap - SB Admin Version 2.0 Demo</title>
+
+        <!-- Core CSS - Include with every page -->
+        <link href="css/bootstrap-rtl.css" rel="stylesheet">
+        <link href="font-awesome/css/font-awesome.css" rel="stylesheet">
+
+        <!-- Page-Level Plugin CSS - Tables -->
+        <link href="css/plugins/dataTables/dataTables.bootstrap.css" rel="stylesheet">
+
+        <!-- SB Admin CSS - Include with every page -->
+        <link href="css/sb-admin.css" rel="stylesheet">
+        <link href="~/sweetalert2/sweetalert2.min.css" rel="stylesheet" />
+
+    </head>
+}
+
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header">کتاب های رزرو شده</h1>
+    </div>
+    <!-- /.col-lg-12 -->
+</div>
+<!-- /.row -->
+<div class="row">
+    <div class="col-lg-12">
+        <div class="panel panel-default">
+            <!-- /.panel-heading -->
+            <div class="panel-body">
+                <div class="table-responsive">
+                    <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+                        <thead>
+                            <tr>
+                                <th style="text-align:center">کد رزرو</th>
+                                <th style="text-align:center">کاربر</th>
+                                <th style="text-align:center">کتاب</th>
+                                <th style="text-align:center">زمان شروع رزرو</th>
+                                <th style="text-align:center">زمان پایان رزرو</th>
+                                <th style="text-align:center">وضعیت</th>
+                                <th style="text-align:center">دستورات</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var Item in Model)
+                            {
+                                <tr class="gradeA">
+                                    <td style="text-align:center; vertical-align:middle">@Item.Id</td>
+                                    <td style="text-align:center; vertical-align:middle">@Item.User.Name</td>
+                                    <td style="text-align:center; vertical-align:middle">@Item.Book.Name</td>
+                                    <td style="text-align:center; vertical-align:middle">@DateTimeSettings.ToPersianDateString(Item.StartTime)</td>
+                                    <td style="text-align:center; vertical-align:middle">@DateTimeSettings.ToPersianDateString(Item.EndTime)</td>
+                                    <td style="text-align:center; vertical-align:middle">
+                                        @if (Item.IsReturned == true)
+                                        {
+                                            <p style="color:green">برگردانده شده است</p>
+                                        }
+                                        else if (Now == DateTimeSettings.GetTheDay(Item.EndTime))
+                                        {
+                                            <p style="color:red">یک روز به زمان تحویل باقی مانده است. پیامک هشدار به کاربر فرستاده شد.</p>
+                                            <hr />
+                                            <a onclick="ObserverMessageContext(1)" class="btn btn-primary">مشاهده ی پیامک</a>
+                                        }
+                                        else if (Now >= Item.EndTime)
+                                        {
+                                            <p style="color:red">زمان کاربر به پایان رسیده است. به کاربر پیامک فرستاده شد.</p>
+                                            <hr />
+                                            <a onclick="ObserverMessageContext(2)" class="btn btn-primary">مشاهده ی پیامک</a>
+                                        }
+                                        else
+                                        {
+                                            <p style="color:red">برگردانده نشده است</p>
+                                        }
+                                    </td>
+                                    <td style="text-align:center; vertical-align:middle">
+                                        @if (Item.IsReturned == true)
+                                        {
+                                            <p class="text-info">انجام دستوری مجاز نیست</p>
+                                        }
+                                        else
+                                        {
+                                            <a class="btn btn-info" style="display:flex; flex-direction:column; margin:4px" href="Users_BooksTest?id=@Item.User.Id&&editId=@Item.Id">ویرایش</a>
+                                            <a style="display:flex; flex-direction:column; margin:4px" onclick="TheBookIsBack(@Item.Id)" class="btn btn-success">برگردانده شد</a>
+                                        }
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <!-- /.panel-body -->
+        </div>
+        <!-- /.panel -->
+    </div>
+    <!-- /.col-lg-12 -->
+</div>
+
+@section Scripts
+{
+    <!-- Core Scripts - Include with every page -->
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/plugins/metisMenu/jquery.metisMenu.js"></script>
+
+    <!-- Page-Level Plugin Scripts - Tables -->
+    <script src="js/plugins/dataTables/jquery.dataTables.js"></script>
+    <script src="js/plugins/dataTables/dataTables.bootstrap.js"></script>
+
+    <!-- SB Admin Scripts - Include with every page -->
+    <script src="js/sb-admin.js"></script>
+
+    <!-- Page-Level Demo Scripts - Tables - Use for reference -->
+    <script>
+        $(document).ready(function () {
+            $('#dataTables-example').dataTable();
+        });
+    </script>
+    <script src="~/lib/jquery/jquery.unobtrusive-ajax.min.js"></script>
+
+    <script src="~/js/myownjsfiles/users'books.js"></script>
+}
+
+@section Modals {
+    <div class="modal fade text-right" id="Main" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="ModalTitle"></h5>
+                </div>
+                <div class="modal-body" id="ModalBody">
+                </div>
+            </div>
+        </div>
+    </div>
+}

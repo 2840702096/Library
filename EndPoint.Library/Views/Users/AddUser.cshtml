@@ -1,0 +1,21 @@
+﻿@using Library.Application.Services.Users.Command.AddOrEditUser
+@model AddOrEditUserServiceDto
+
+<form asp-controller="Users" asp-action="AddUser" data-ajax="true" data-ajax-method="post" data-ajax-success="AddOrEditUserResult" style="text-align:right" id="AddOrEditUserForm" enctype="multipart/form-data" method="post">
+    <input type="hidden" value="@ViewBag.EditId" asp-for="@Model.EditId" />
+    <div class="form-group">
+        <label class="col-form-label pt-0">نام</label>
+        <input asp-for="Name" class="form-control" type="text">
+        <span class="text-danger" asp-validation-for="Name"></span>
+    </div>
+    <div class="form-group">
+        <label class="col-form-label pt-0">تلفن همراه</label>
+        <input asp-for="Phone" class="form-control" type="text">
+        <span class="text-danger" asp-validation-for="Phone"></span>
+    </div>
+    <div class="form-group mb-0">
+        <div class="product-buttons text-center">
+            <button type="submit" class="btn btn-info">ذخیره</button>
+        </div>
+    </div>
+</form>

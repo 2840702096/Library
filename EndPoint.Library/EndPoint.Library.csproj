@@ -1,0 +1,124 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Areas\**" />
+    <Content Remove="Areas\**" />
+    <EmbeddedResource Remove="Areas\**" />
+    <None Remove="Areas\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="wwwroot\js\MyOwnJsFiles\Books.js" />
+    <Content Remove="wwwroot\js\MyOwnJsFiles\Messages.js" />
+    <Content Remove="wwwroot\js\MyOwnJsFiles\Users'Books.js" />
+    <Content Remove="wwwroot\js\MyOwnJsFiles\Users.js" />
+    <Content Remove="wwwroot\lib\bootstrap\dist\js\PersianDatePicker\bootstrap.bundle.min.js.map" />
+    <Content Remove="wwwroot\lib\bootstrap\dist\js\PersianDatePicker\persian-date - Copy.js.map" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\font-awesome\fonts\fontawesome-webfont.svg" />
+    <None Include="wwwroot\font-awesome\less\bordered-pulled.less" />
+    <None Include="wwwroot\font-awesome\less\core.less" />
+    <None Include="wwwroot\font-awesome\less\fixed-width.less" />
+    <None Include="wwwroot\font-awesome\less\font-awesome.less" />
+    <None Include="wwwroot\font-awesome\less\icons.less" />
+    <None Include="wwwroot\font-awesome\less\larger.less" />
+    <None Include="wwwroot\font-awesome\less\list.less" />
+    <None Include="wwwroot\font-awesome\less\mixins.less" />
+    <None Include="wwwroot\font-awesome\less\path.less" />
+    <None Include="wwwroot\font-awesome\less\rotated-flipped.less" />
+    <None Include="wwwroot\font-awesome\less\spinning.less" />
+    <None Include="wwwroot\font-awesome\less\stacked.less" />
+    <None Include="wwwroot\font-awesome\less\variables.less" />
+    <None Include="wwwroot\font-awesome\scss\font-awesome.scss" />
+    <None Include="wwwroot\font-awesome\scss\_bordered-pulled.scss" />
+    <None Include="wwwroot\font-awesome\scss\_core.scss" />
+    <None Include="wwwroot\font-awesome\scss\_fixed-width.scss" />
+    <None Include="wwwroot\font-awesome\scss\_icons.scss" />
+    <None Include="wwwroot\font-awesome\scss\_larger.scss" />
+    <None Include="wwwroot\font-awesome\scss\_list.scss" />
+    <None Include="wwwroot\font-awesome\scss\_mixins.scss" />
+    <None Include="wwwroot\font-awesome\scss\_path.scss" />
+    <None Include="wwwroot\font-awesome\scss\_rotated-flipped.scss" />
+    <None Include="wwwroot\font-awesome\scss\_spinning.scss" />
+    <None Include="wwwroot\font-awesome\scss\_stacked.scss" />
+    <None Include="wwwroot\font-awesome\scss\_variables.scss" />
+    <None Include="wwwroot\fonts\glyphicons-halflings-regular.svg" />
+    <None Include="wwwroot\js\bootstrap.js" />
+    <None Include="wwwroot\js\bootstrap.min.js" />
+    <None Include="wwwroot\js\demo\dashboard-demo.js" />
+    <None Include="wwwroot\js\demo\flot-demo.js" />
+    <None Include="wwwroot\js\demo\morris-demo.js" />
+    <None Include="wwwroot\js\jquery-1.10.2.js" />
+    <None Include="wwwroot\js\MyOwnJsFiles\Books.js" />
+    <None Include="wwwroot\js\MyOwnJsFiles\Messages.js" />
+    <None Include="wwwroot\js\MyOwnJsFiles\Users%27Books.js" />
+    <None Include="wwwroot\js\MyOwnJsFiles\Users.js" />
+    <None Include="wwwroot\js\plugins\dataTables\dataTables.bootstrap.js" />
+    <None Include="wwwroot\js\plugins\dataTables\jquery.dataTables.js" />
+    <None Include="wwwroot\js\plugins\flot\excanvas.min.js" />
+    <None Include="wwwroot\js\plugins\flot\jquery.flot.js" />
+    <None Include="wwwroot\js\plugins\flot\jquery.flot.pie.js" />
+    <None Include="wwwroot\js\plugins\flot\jquery.flot.resize.js" />
+    <None Include="wwwroot\js\plugins\flot\jquery.flot.tooltip.min.js" />
+    <None Include="wwwroot\js\plugins\metisMenu\jquery.metisMenu.js" />
+    <None Include="wwwroot\js\plugins\morris\morris.js" />
+    <None Include="wwwroot\js\plugins\morris\raphael-2.1.0.min.js" />
+    <None Include="wwwroot\js\sb-admin.js" />
+    <None Include="wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css.map" />
+    <None Include="wwwroot\lib\bootstrap\dist\css\bootstrap-grid.min.css.map" />
+    <None Include="wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.css.map" />
+    <None Include="wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.min.css.map" />
+    <None Include="wwwroot\lib\bootstrap\dist\css\bootstrap.css.map" />
+    <None Include="wwwroot\lib\bootstrap\dist\css\bootstrap.min.css.map" />
+    <None Include="wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.js" />
+    <None Include="wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.js.map" />
+    <None Include="wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.min.js" />
+    <None Include="wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.min.js.map" />
+    <None Include="wwwroot\lib\bootstrap\dist\js\bootstrap.js" />
+    <None Include="wwwroot\lib\bootstrap\dist\js\bootstrap.js.map" />
+    <None Include="wwwroot\lib\bootstrap\dist\js\bootstrap.min.js" />
+    <None Include="wwwroot\lib\bootstrap\dist\js\bootstrap.min.js.map" />
+    <None Include="wwwroot\lib\bootstrap\dist\js\PersianDatePicker\jquery-1.9.1.min.js" />
+    <None Include="wwwroot\lib\bootstrap\LICENSE" />
+    <None Include="wwwroot\lib\jquery-validation-unobtrusive\jquery.validate.unobtrusive.js" />
+    <None Include="wwwroot\lib\jquery-validation-unobtrusive\jquery.validate.unobtrusive.min.js" />
+    <None Include="wwwroot\lib\jquery-validation\dist\additional-methods.js" />
+    <None Include="wwwroot\lib\jquery-validation\dist\additional-methods.min.js" />
+    <None Include="wwwroot\lib\jquery-validation\dist\jquery.validate.js" />
+    <None Include="wwwroot\lib\jquery-validation\dist\jquery.validate.min.js" />
+    <None Include="wwwroot\lib\jquery-validation\LICENSE.md" />
+    <None Include="wwwroot\lib\jquery\dist\jquery.js" />
+    <None Include="wwwroot\lib\jquery\dist\jquery.min.js" />
+    <None Include="wwwroot\lib\jquery\dist\jquery.min.map" />
+    <None Include="wwwroot\lib\jquery\jquery.unobtrusive-ajax.js" />
+    <None Include="wwwroot\lib\jquery\jquery.unobtrusive-ajax.min.js" />
+    <None Include="wwwroot\lib\jquery\jquery.validate.min.js" />
+    <None Include="wwwroot\lib\jquery\jquery.validate.unobtrusive.js" />
+    <None Include="wwwroot\lib\jquery\jquery.validate.unobtrusive.min.js" />
+    <None Include="wwwroot\Sweetalert2\sweetalert2.min.js" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.17" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="5.0.17">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="5.0.17" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="5.0.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Application.Library\Library.Application.csproj" />
+    <ProjectReference Include="..\Domain.Library\Library.Domain.csproj" />
+    <ProjectReference Include="..\Library.Common\Library.Common.csproj" />
+    <ProjectReference Include="..\Persistence\Library.Persistence.csproj" />
+  </ItemGroup>
+
+</Project>

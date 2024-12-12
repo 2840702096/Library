@@ -1,0 +1,20 @@
+﻿@using Library.Application.Services.Books.Command.AddOrEditBook
+@model AddOrEditBookServiceInputDto
+
+<form asp-controller="Books" asp-action="AddOrEditBook" data-ajax="true" data-ajax-method="post" data-ajax-success="AddOrEditBookResult" style="text-align:right" id="AddOrEditBookForm" enctype="multipart/form-data" method="post">
+    <input type="hidden" value="@ViewBag.EditId" asp-for="@Model.EditId" />
+    <div class="form-group">
+        <label class="col-form-label pt-0">نام</label>
+        <input asp-for="Name" class="form-control" type="text">
+        <span class="text-danger" asp-validation-for="Name"></span>
+    </div>
+    <div class="form-group">
+        <label class="col-form-label pt-0">تعداد</label>
+        <input asp-for="Quantity" class="form-control" type="number">
+    </div>
+    <div class="form-group mb-0">
+        <div class="product-buttons text-center">
+            <button type="submit" class="btn btn-info">ذخیره</button>
+        </div>
+    </div>
+</form>

@@ -1,0 +1,17 @@
+﻿@using Library.Application.Services.Messages.Query.GetMessageInfoForEdit
+@model GetMessageInfoForEditServiceResultDto
+
+<form asp-controller="Messages" asp-action="ObserveOrEditMessageContext" data-ajax="true" data-ajax-method="post" data-ajax-success="ObserveOrEditMessageContextResult" style="text-align:right" id="ObserveOrEditMessageContextForm" enctype="multipart/form-data" method="post">
+    <input type="hidden" value="@ViewBag.EditId" asp-for="@Model.EditId" />
+    <div class="form-group">
+        <label class="col-form-label pt-0">نام</label>
+        <textarea asp-for="MessageContext" class="form-control" type="text">
+            </textarea>
+        <span class="text-danger" asp-validation-for="MessageContext"></span>
+    </div>
+    <div class="form-group mb-0">
+        <div class="product-buttons text-center">
+            <button type="submit" class="btn btn-info">ذخیره</button>
+        </div>
+    </div>
+</form>

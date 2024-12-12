@@ -1,0 +1,120 @@
+﻿@using Library.Application.Services.Users_Books.Command.AddOrEditUsers_Book
+@using Library.Common
+@model AddOrEditUsers_BookServiceInputDto
+
+@section Top
+{
+    <head>
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <title>Start Bootstrap - SB Admin Version 2.0 Demo</title>
+
+        <!-- Core CSS - Include with every page -->
+        <link href="css/bootstrap-rtl.css" rel="stylesheet">
+        <link href="font-awesome/css/font-awesome.css" rel="stylesheet">
+
+        <!-- Page-Level Plugin CSS - Tables -->
+        <link href="css/plugins/dataTables/dataTables.bootstrap.css" rel="stylesheet">
+
+        <!-- SB Admin CSS - Include with every page -->
+        <link href="css/sb-admin.css" rel="stylesheet">
+
+        <link href="~/sweetalert2/sweetalert2.min.css" rel="stylesheet" />
+
+        <link href="~/lib/bootstrap/dist/css/persiandatepicker/kendo.common.min.css" rel="stylesheet" />
+        <link href="~/lib/bootstrap/dist/css/persiandatepicker/kendo.default.min.css.css" rel="stylesheet" />
+    </head>
+}
+
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header">رزرواسیون کتاب</h1>
+    </div>
+    <!-- /.col-lg-12 -->
+</div>
+<!-- /.row -->
+<div class="row">
+    <div class="col-lg-12">
+        <div class="panel panel-default">
+
+            <!-- /.panel-heading -->
+            <div class="panel-body">
+                <div class="table-responsive">
+                    @if (ViewBag.ThisUserHasAlreadyReservedABook == true)
+                    {
+                        <div class="text-danger">این کاربر قبلا کتابی یا کتاب هایی را رزرو کرده است و زمان تحویل آنها به پایان رسیده است. اما کاربر کتاب یا کتاب ها را بازنگردانده است. در این صورت نمیتوان رزرواسیون جدیدی برای کاربر ایجاد کرد، و یا ویرایشی بر روی رزرواسیون های موجودش انجام داد.</div>
+                    }
+                    else
+                    {
+                        <form asp-controller="Users" asp-action="Users_BooksTest" method="post" enctype="application/x-www-form-urlencoded">
+                            <input type="hidden" value="@ViewBag.EditId" asp-for="@Model.EditId" />
+                            <input type="hidden" value="@ViewBag.UserId" asp-for="@Model.UserId" />
+                            <div class="form-group">
+                                <label class="col-form-label pt-0">کتاب</label>
+                                <select asp-for="BookId" class="form-control" asp-items="@ViewBag.Books">
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-form-label pt-0">تاریخ شروع</label><br />
+                                @if (ViewBag.EditId == null)
+                                {
+                                    <input asp-for="StartDate" id="datepicker" value="@DateTimeSettings.ToPersianDateString(DateTime.Now)" style="width:150px;" />
+                                }
+                                else
+                                {
+                                    <input asp-for="StartDate" id="datepicker" style="width:150px;" />
+                                }
+                            </div>
+                            <div class="form-group">
+                                <label class="col-form-label pt-0">تاریخ پایان</label><br />
+                                @if (ViewBag.EditId == null)
+                                {
+                                    <input asp-for="EndDate" id="datepicker1" value="@DateTimeSettings.ToPersianDateString(DateTime.Now)" style="width:150px;" />
+                                }
+                                else
+                                {
+                                    <input asp-for="EndDate" id="datepicker1" style="width:150px;" />
+                                }
+                            </div>
+                            <div class="form-group mb-0">
+                                <div class="product-buttons text-center">
+                                    <button type="submit" class="btn btn-info">ذخیره</button>
+                                </div>
+                            </div>
+                        </form>
+                    }
+                </div>
+            </div>
+            <!-- /.panel-body -->
+        </div>
+        <!-- /.panel -->
+    </div>
+    <!-- /.col-lg-12 -->
+</div>
+
+@section Scripts
+{
+    <!-- Core Scripts - Include with every page -->
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/plugins/metisMenu/jquery.metisMenu.js"></script>
+
+    <!-- Page-Level Plugin Scripts - Tables -->
+    <script src="js/plugins/dataTables/jquery.dataTables.js"></script>
+    <script src="js/plugins/dataTables/dataTables.bootstrap.js"></script>
+
+    <!-- SB Admin Scripts - Include with every page -->
+    <script src="js/sb-admin.js"></script>
+
+    <script src="~/lib/bootstrap/dist/js/persiandatepicker/jquery-1.9.1.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/persiandatepicker/kendo.all.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            // create DatePicker from input HTML element
+            $("#datepicker").kendoDatePicker();
+            $("#datepicker1").kendoDatePicker();
+        });
+    </script>
+}
